@@ -1,0 +1,28 @@
+---
+
+#- name: debug
+#  debug:
+#    var: agent_install_path
+
+- name: download agent_install script 
+  get_url:
+    url: "{{agent_download_url}}"
+    dest: "{{agent_install_file}}"
+    headers: 'Host:{{agent_download_real_ip}}'
+    force: yes
+
+- name: modify serer_ip for {{agent_install_file}}
+  shell: sed -ri '/^\bserver_ip=/c\server_ip="{{server_ip}}"' {{agent_install_file}}
+  when: is_mapping_network
+
+
+- name: install agent for client
+  shell: sh "{{agent_install_file}}" {{org}} {{server_ip}}
+  async: 3000
+  poll: 10
+  sudo: yes
+  register: agent_install
+
+- name: agent install stdout
+  debug: var=agent_install.stdout_lines
+  when: agent_install is defined

@@ -1,0 +1,14 @@
+---
+
+
+org: 1028
+
+common:
+  normal_user: dgadmin
+  root_user: root
+
+openapi:
+  access_key: cad90b2673b1f66e2e913ddd
+  secret_key: c64c11bebd3f6c270a538f8b67a7c443b9e1a51aa1fcacc59231624b4f7a4934
+
+agent_download_real_ip: 40.125.160.118

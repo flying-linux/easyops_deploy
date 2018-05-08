@@ -1,0 +1,23 @@
+---
+
+is_mapping_network: true
+agent_download_proxy_ip: ''
+agent_install_file: /tmp/agent_install.sh
+agent_install_path: /usr/local/easyops/agent
+
+pkg:
+  agent: agent.tar.gz
+  python: python_linux.tar.gz
+  proxy: proxy.tar.gz
+
+agent:
+  download_real_url: "http://{{agent_download_real_ip}}/agent/sh/e06f38d51c6ef605e26c530719b68bb457b374fe/install.sh"
+  download_proxy_url: http://{{agent_download_proxy_ip}}/agent/sh/e06f38d51c6ef605e26c530719b68bb457b374fe/install.sh?proxy_ip={{agent_download_proxy_ip}}
+
+proxy:
+  download_url: "{{agent.download_real_url}}?type=proxy"
+  install_file: /tmp/proxy_install.sh
+
+agent_download_url: "{% if agent_download_proxy_ip %}{{agent.download_proxy_url}}{% else %}{{agent.download_real_url}}{% endif %}"
+server_ip: "{% if agent_download_proxy_ip %}{{agent_download_proxy_ip}}{% else %}{{agent_download_real_ip}}{% endif %}"
+
