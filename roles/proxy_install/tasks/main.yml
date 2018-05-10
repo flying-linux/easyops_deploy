@@ -15,13 +15,20 @@
 
 - name: modify serer_ip for {{proxy.install_file}}
   shell: sed -ri '/^\bserver_ip=/c\server_ip="{{server_ip}}"' "{{proxy.install_file}}" 
+  become: yes
   when: is_mapping_network
+
+- name: Create program execution user
+  user:
+    name: "{{easyops.nginx_user}}"
+    shell: /sbin/nologin
+  become: yes
 
 - name: execute the installation script
   shell: sh "{{proxy.install_file}}"
   async: 300
   poll: 10
-  sudo: yes
+  become: yes
   register: proxy_install
 
 - name: proxy install stdout

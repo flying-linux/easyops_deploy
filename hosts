@@ -1,17 +1,25 @@
 [proxy1]
-agent1-1 ansible_ssh_host=172.17.0.5 hostname=agent1-1
-agent1-2 ansible_ssh_host=172.17.0.6 hostname=agent1-2
+agent1-1 ansible_ssh_host=192.172.0.6 hostname=agent1-1
+agent1-2 ansible_ssh_host=192.172.0.7 hostname=agent1-2
 
 [proxy1:vars]
-agent_download_proxy_ip=172.17.0.3
+agent_download_proxy_ip=192.172.0.3
 
 [proxy2]
-agent2-1 ansible_ssh_host=172.17.0.8 hostname=agent2-1
-agent2-2 ansible_ssh_host=172.17.0.9 hostname=agent2-2
+agent2-1 ansible_ssh_host=192.172.0.8 hostname=agent2-1
+agent2-2 ansible_ssh_host=192.172.0.9 hostname=agent2-2
 
 [proxy2:vars]
-agent_download_proxy_ip= 172.17.0.7
+agent_download_proxy_ip= 192.172.0.4
+
+[proxy3]
+agent3-1 ansible_ssh_host=192.172.0.10 hostname=agent2-1
+agent3-2 ansible_ssh_host=192.172.0.11 hostname=agent2-2
+
+[proxy3:vars]
+agent_download_proxy_ip= 192.172.0.5
 
 [proxy]
-proxy1 ansible_ssh_host=172.17.0.3
-proxy2 ansible_ssh_host=172.17.0.7
+proxy_h1 ansible_ssh_host=192.172.0.3
+proxy_h2 ansible_ssh_host=192.172.0.4
+proxy_h3 ansible_ssh_host=192.172.0.5

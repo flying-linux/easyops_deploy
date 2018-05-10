@@ -1,9 +1,5 @@
 ---
 
-#- name: debug
-#  debug:
-#    var: agent_install_path
-
 - name: download agent_install script 
   get_url:
     url: "{{agent_download_url}}"
@@ -20,7 +16,7 @@
   shell: sh "{{agent_install_file}}" {{org}} {{server_ip}}
   async: 3000
   poll: 10
-  sudo: yes
+  become: yes
   register: agent_install
 
 - name: agent install stdout

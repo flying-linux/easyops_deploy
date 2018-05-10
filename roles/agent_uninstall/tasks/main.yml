@@ -2,12 +2,12 @@
 
 - stat: path={{agent_install_path}}
   register: e_agent
-  sudo: yes 
+  become: yes 
 
 - name: stop agent 
   shell: easyops stop {{agent_install_path}}
   ignore_errors: true
-  sudo: yes
+  become: yes
   register: agent_uninstall
   when: e_agent.stat.isdir is defined 
 
@@ -17,5 +17,5 @@
 
 - name: remove package install folder
   file: path={{agent_install_path}} state=absent
-  sudo: yes
+  become: yes
   when: e_agent.stat.isdir is defined 

@@ -1,15 +1,8 @@
 ---
 
-#- hosts: '{{ target_hosts }}'
-#- hosts: all
-#  remote_user: '{{common.root_user}}'
-#  gather_facts: False
-#  tasks:
-#    - name: get date
-#      shell: date
 
 - hosts: all:!proxy
-  remote_user: '{{common.root_user}}'
+  remote_user: '{{common.normal_user}}'
   gather_facts: False
   roles:
     - agent_uninstall
@@ -18,7 +11,7 @@
     - agent_install
 
 - hosts: proxy
-  remote_user: '{{common.root_user}}'
+  remote_user: '{{common.normal_user}}'
   gather_facts: False
   roles:
     - proxy_install
@@ -26,7 +19,7 @@
     - proxy_install
 
 - hosts: all:!proxy
-  remote_user: '{{common.root_user}}'
+  remote_user: '{{common.normal_user}}'
   gather_facts: False
   roles:
     - agent_uninstall
