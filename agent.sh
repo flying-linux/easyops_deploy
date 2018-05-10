@@ -7,7 +7,7 @@ action=$1
 
 case $action in
 agent_install|agent_uninstall|proxy_install)
-    ansible-playbook -i hosts -t $action agent.yml -K ;;
+    ansible-playbook -i hosts -t $action agent.yml ;;
 *)
    echo -e "\033[31mThe action should be one of :\033[0m""\033[32m [agent_install|agent_uninstall|proxy_install] \033[0m"  
 esac

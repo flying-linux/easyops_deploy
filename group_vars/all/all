@@ -9,6 +9,7 @@ openapi:
   secret_key: c64c11bebd3f6c270a538f8b67a7c443b9e1a51aa1fcacc59231624b4f7a4934
 
 org: 1028
-agent_download_real_ip: 40.125.160.118
 ansible_ssh_pass: gx@easyops
+ansible_su_pass: dev@easyops
+agent_download_real_ip: 40.125.160.118
 uuid_in_url: e06f38d51c6ef605e26c530719b68bb457b374fe
